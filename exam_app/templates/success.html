@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Friends</title>
+	</head>
+	<body>
+	<a href="/logout">Logout</a>
+	<h1>Welcome, {{currentUser.alias}}</h1>
+	<h2>Here is the list of your friends:</h2>
+	<!-- Table for user's friends -->
+	<table>
+		<thead>
+			<tr>
+				<th>Alias</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for friend in friends %}
+			<tr>
+				<td>{{friend.friend.alias}}</td>
+				<td><a href="/users/profile/{{friend.friend.id}}">View Profile</a></td>
+				<td><a href="/delete_friend/{{friend.id}}">Remove as Friend</a></td>
+			</tr>
+				{% empty %}
+				<th>You don't have any friends yet ): </th>
+			{% endfor %}
+		</tbody>
+	</table>
+	<!-- Table of other users -->
+	<h2>Other Users not on your friend's list:</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Alias</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+			<tr>
+				<td>
+					<a href="/users/profile/{{user.id}}">{{user.alias}}</a>
+				</td>
+				<td>
+					<form action="/add_friend/{{user.id}}" method ="post">
+					{% csrf_token %}
+						<input type="submit" name="submit" value = "Add as Friend">
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	</body>
+</html>

@@ -1,0 +1,11 @@
+body{
+	padding:15px;
+}
+.container{
+	display: inline-block;
+	width: 48%;
+	vertical-align: top;
+}
+.header{
+	margin-right: 10px
+}

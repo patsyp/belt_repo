@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>User Profile</title>
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	</head>
+	<body>
+	<div class = header>
+		<a href="/logout">Logout</a>
+		<a href="/success">Home</a>
+	</div>
+		<h1>{{user.alias}}'s Profile</h1>
+		<h2>Name: {{user.name}}</h2>
+		<h2>Email: {{user.email}}</h2>
+		<h2>Brithday: {{user.birthday}}
+	</body>
+</html>
